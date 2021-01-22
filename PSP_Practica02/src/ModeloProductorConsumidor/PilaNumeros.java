@@ -7,27 +7,36 @@ public class PilaNumeros {
 	private static ArrayList<Integer> numeros = null;
 
 //CONSTRUCTOR
-	public PilaNumeros() {
-		this.numeros = new ArrayList<Integer>(3); //Le pongo un tamaño fijo al array, lo limito
+	public PilaNumeros(int size) {
+		this.numeros = new ArrayList<Integer>(size); //Le pongo un tamaño fijo al array, lo limito
 	}
 	
 //METODOS
 	//Con synchronized me aseguro que más de 1 hilo no puede acceder al mismo método a la vez.
-	public synchronized void addNumber(int number) { 
+	public synchronized boolean addNumber(int number) { 
 		numeros.add(number);
+		return true;
 	}
 	
-	public synchronized void removeNumber() {
+	public synchronized boolean removeNumber() {
 		int numTemporal = 0;
 		
 		if(!numeros.isEmpty()) {
 			numeros.remove(numeros.size()-1);
-		} 
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public synchronized void showListNumbers() {
-		for(int i : numeros) {
-			System.out.print(i + ", ");
+		if(numeros.isEmpty()) {
+			System.out.println("\nLista vacía.");
+		}else {
+			System.out.println();
+			for(int i : numeros) {
+				System.out.print(i + ", ");
+			}
 		}
 	}
 }

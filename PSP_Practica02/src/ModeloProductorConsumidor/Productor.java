@@ -6,27 +6,30 @@ import java.util.Random;
 public class Productor implements Runnable{
 	
 	private int id;
-	private ArrayList<Integer> numerosProducidos = null;
-	private Random ale = new Random();
+	private PilaNumeros numeros = null;
+	private int veces = 0;
 	
 //CONSTRUCTOR
-	public Productor(int id) {
+	public Productor(int id, PilaNumeros numeros, int veces) {
 		super();
 		this.id = id;
+		this.numeros = numeros;
+		this.veces = veces;
 	}
-
+	
 //METODOS
 	@Override
 	public void run() {
-		try {
-			int num = ale.nextInt();
-			
-			
-		}catch(InterruptedException e){
-			e.printStackTrace();
+		int cont = 0;
+		while(cont < veces) {
+			numeros.addNumber(cont);
+			cont++;
 		}
+		
+		numeros.showListNumbers();
+				
 	}
-	
 
+	
 	
 }
