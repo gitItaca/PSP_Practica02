@@ -1,17 +1,32 @@
 package ModeloProductorConsumidor;
 
-public class Productor {
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Productor implements Runnable{
 	
 	private int id;
-	private int numero;
+	private ArrayList<Integer> numerosProducidos = null;
+	private Random ale = new Random();
 	
 //CONSTRUCTOR
-	public Productor(int id, int numero) {
+	public Productor(int id) {
 		super();
 		this.id = id;
-		this.numero = numero;
-	}	
-	
+	}
+
 //METODOS
+	@Override
+	public void run() {
+		try {
+			int num = ale.nextInt();
+			
+			
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
+	}
+	
+
 	
 }
