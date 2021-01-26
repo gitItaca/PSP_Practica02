@@ -16,23 +16,21 @@ public class Consumidor implements Runnable{
 	@Override
 	public void run() {
 		int cont = 0;
-		while (cont < veces){
-			if(numeros.removeNumber()) {
-				cont++;
-				System.out.println("Consumiendo");
-			}else {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					System.out.print("Pila vacía, espere por favor.");
-					e.printStackTrace();
+		while (cont < veces){					//Mientras el contador sea menor que las veces que consuma, quita un numero de la pila y suma un punto al contador.
+			try {
+				if(numeros.removeNumber()) {
+					cont++;
 				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
-		//System.out.println("El consumidor ha consumido: ");
-		numeros.showListNumbers();
-		System.out.println("Números que quedan después de haber consumido.");
+		numeros.showListNumbers();				//Cuando termina de consumir imprime los numeros que quedan en la pila.
 	}
 	
 
 }
+
+
+//System.out.println(Thread.currentThread().getState());		
+//System.out.println(Thread.currentThread().getName());	

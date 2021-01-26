@@ -1,7 +1,5 @@
 package ModeloProductorConsumidor;
 
-import java.util.ArrayList;
-import java.util.Random;
 
 public class Productor implements Runnable{
 	
@@ -20,13 +18,16 @@ public class Productor implements Runnable{
 	@Override
 	public void run() {
 		int cont = 0;
-		while(cont < veces) {
-			numeros.addNumber(cont);
-			cont++;
-		}
-		//System.out.println("El productor ha producido: " );
-		numeros.showListNumbers();
-		
+		while(cont < veces) {					//Mientras el contador sea menor que las veces que va a producir, añade un numero a la pila y suma uno al contador.
+			try {
+				if(numeros.addNumber(cont)) {
+					cont++;
+				};
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}			
+		}		
+		numeros.showListNumbers();				//Cuando termina de producir, muestra los numeros que quedan en la pila.
 	}
 	
 }
