@@ -8,7 +8,6 @@ public class Consumidor implements Runnable{
 	
 //CONSTRUCTOR
 	public Consumidor(int id, PilaNumeros numeros, int veces) {
-		super();
 		this.id = id;
 		this.numeros = numeros;
 		this.veces = veces;
@@ -20,6 +19,7 @@ public class Consumidor implements Runnable{
 		while (cont < veces){
 			if(numeros.removeNumber()) {
 				cont++;
+				System.out.println("Consumiendo");
 			}else {
 				try {
 					Thread.sleep(1000);
@@ -29,7 +29,9 @@ public class Consumidor implements Runnable{
 				}
 			}
 		}
+		//System.out.println("El consumidor ha consumido: ");
 		numeros.showListNumbers();
+		System.out.println("Números que quedan después de haber consumido.");
 	}
 	
 

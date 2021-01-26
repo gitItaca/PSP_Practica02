@@ -11,7 +11,6 @@ public class Productor implements Runnable{
 	
 //CONSTRUCTOR
 	public Productor(int id, PilaNumeros numeros, int veces) {
-		super();
 		this.id = id;
 		this.numeros = numeros;
 		this.veces = veces;
@@ -25,11 +24,9 @@ public class Productor implements Runnable{
 			numeros.addNumber(cont);
 			cont++;
 		}
-		
+		//System.out.println("El productor ha producido: " );
 		numeros.showListNumbers();
-				
+		
 	}
-
-	
 	
 }

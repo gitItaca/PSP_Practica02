@@ -14,6 +14,7 @@ public class PilaNumeros {
 //METODOS
 	//Con synchronized me aseguro que más de 1 hilo no puede acceder al mismo método a la vez.
 	public synchronized boolean addNumber(int number) { 
+		//while(taskIds.size() == ma) meterle wait para dormir si está llena
 		numeros.add(number);
 		return true;
 	}
@@ -22,7 +23,8 @@ public class PilaNumeros {
 		int numTemporal = 0;
 		
 		if(!numeros.isEmpty()) {
-			numeros.remove(numeros.size()-1);
+			numeros.remove(0);
+			//numeros.remove(numeros.size()-1); //Es LIFO, lo tengo que cambiar
 			return true;
 		} else {
 			return false;
